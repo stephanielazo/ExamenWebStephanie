@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ejercicio 2</title>
+
+    <link rel="stylesheet" href="/static/css/ejercicio2.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Inicio de sesión</h1> <br>
+
+
+        <form method="POST">
+
+            <div class="form-group">
+
+                <label for="usuario">Ingresa tu nombre </label>
+
+                <input type="text" id="usuario" name="usuario" required>
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="contrasena">Ingresa tu Contraseña</label>
+
+                <input type="password" id="contrasena" name="contrasena" required>
+            </div>
+
+
+            <button type="submit"> Verificar </button>
+        </form>
+
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+                <ul class="flash-messages">
+
+                    {% for category, message in messages %} <br>
+
+                        <li class="flash {{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+
+        {% if mensaje_bienvenida %}
+
+            <div class="welcome-message">
+                <p>{{ mensaje_bienvenida }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
